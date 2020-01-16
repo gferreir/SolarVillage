@@ -8,16 +8,19 @@ public class NewOrder implements java.io.Serializable {
 
 	static final long serialVersionUID = 1L;
 
-	@org.kie.api.definition.type.Label(value = "Electrical Submit")
+	@org.kie.api.definition.type.Label("Electrical Submit")
 	private java.lang.String electricalSubmit;
-	@org.kie.api.definition.type.Label(value = "Structural Submit")
+	@org.kie.api.definition.type.Label("Structural Submit")
 	private java.lang.String structuralSubmit;
-	@org.kie.api.definition.type.Label(value = "Resident Name")
+	@org.kie.api.definition.type.Label("Resident Name")
 	private java.lang.String residentName;
-	@org.kie.api.definition.type.Label(value = "Residence Type")
+	@org.kie.api.definition.type.Label("Residence Type")
 	private java.lang.Character typeResidence;
-	@org.kie.api.definition.type.Label(value = "Status")
+	@org.kie.api.definition.type.Label("Status")
 	private java.lang.String status;
+
+	@org.kie.api.definition.type.Label(value = "HOA Approval")
+	private java.lang.Character hoaApproval;
 
 	public NewOrder() {
 	}
@@ -62,14 +65,24 @@ public class NewOrder implements java.io.Serializable {
 		this.status = status;
 	}
 
+	public java.lang.Character getHoaApproval() {
+		return this.hoaApproval;
+	}
+
+	public void setHoaApproval(java.lang.Character hoaApproval) {
+		this.hoaApproval = hoaApproval;
+	}
+
 	public NewOrder(java.lang.String electricalSubmit,
 			java.lang.String structuralSubmit, java.lang.String residentName,
-			java.lang.Character typeResidence, java.lang.String status) {
+			java.lang.Character typeResidence, java.lang.String status,
+			java.lang.Character hoaApproval) {
 		this.electricalSubmit = electricalSubmit;
 		this.structuralSubmit = structuralSubmit;
 		this.residentName = residentName;
 		this.typeResidence = typeResidence;
 		this.status = status;
+		this.hoaApproval = hoaApproval;
 	}
 
 }
