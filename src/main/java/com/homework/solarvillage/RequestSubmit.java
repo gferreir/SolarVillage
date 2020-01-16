@@ -6,12 +6,24 @@ package com.homework.solarvillage;
 
 public class RequestSubmit implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public RequestSubmit() {
-    }
+	@org.kie.api.definition.type.Label(value = "pid")
+	private java.lang.Integer pid;
 
+	public RequestSubmit() {
+	}
 
+	public java.lang.Integer getPid() {
+		return this.pid;
+	}
 
+	public void setPid(java.lang.Integer pid) {
+		this.pid = pid;
+	}
+
+	public RequestSubmit(java.lang.Integer pid) {
+		this.pid = pid;
+	}
 
 }
