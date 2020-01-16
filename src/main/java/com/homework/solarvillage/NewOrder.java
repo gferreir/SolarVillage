@@ -6,12 +6,70 @@ package com.homework.solarvillage;
 
 public class NewOrder implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public NewOrder() {
-    }
+	@org.kie.api.definition.type.Label(value = "Electrical Submit")
+	private java.lang.String electricalSubmit;
+	@org.kie.api.definition.type.Label(value = "Structural Submit")
+	private java.lang.String structuralSubmit;
+	@org.kie.api.definition.type.Label(value = "Resident Name")
+	private java.lang.String residentName;
+	@org.kie.api.definition.type.Label(value = "Residence Type")
+	private java.lang.Character typeResidence;
+	@org.kie.api.definition.type.Label(value = "Status")
+	private java.lang.String status;
 
+	public NewOrder() {
+	}
 
+	public java.lang.String getElectricalSubmit() {
+		return this.electricalSubmit;
+	}
 
+	public void setElectricalSubmit(java.lang.String electricalSubmit) {
+		this.electricalSubmit = electricalSubmit;
+	}
+
+	public java.lang.String getStructuralSubmit() {
+		return this.structuralSubmit;
+	}
+
+	public void setStructuralSubmit(java.lang.String structuralSubmit) {
+		this.structuralSubmit = structuralSubmit;
+	}
+
+	public java.lang.String getResidentName() {
+		return this.residentName;
+	}
+
+	public void setResidentName(java.lang.String residentName) {
+		this.residentName = residentName;
+	}
+
+	public java.lang.Character getTypeResidence() {
+		return this.typeResidence;
+	}
+
+	public void setTypeResidence(java.lang.Character typeResidence) {
+		this.typeResidence = typeResidence;
+	}
+
+	public java.lang.String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(java.lang.String status) {
+		this.status = status;
+	}
+
+	public NewOrder(java.lang.String electricalSubmit,
+			java.lang.String structuralSubmit, java.lang.String residentName,
+			java.lang.Character typeResidence, java.lang.String status) {
+		this.electricalSubmit = electricalSubmit;
+		this.structuralSubmit = structuralSubmit;
+		this.residentName = residentName;
+		this.typeResidence = typeResidence;
+		this.status = status;
+	}
 
 }
