@@ -19,8 +19,11 @@ public class NewOrder implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("Status")
 	private java.lang.String status;
 
-	@org.kie.api.definition.type.Label(value = "HOA Approval")
+	@org.kie.api.definition.type.Label("HOA Approval")
 	private java.lang.Character hoaApproval;
+
+	@org.kie.api.definition.type.Label(value = "Revisor Status")
+	private java.lang.Character revisorStatus;
 
 	public NewOrder() {
 	}
@@ -73,16 +76,25 @@ public class NewOrder implements java.io.Serializable {
 		this.hoaApproval = hoaApproval;
 	}
 
+	public java.lang.Character getRevisorStatus() {
+		return this.revisorStatus;
+	}
+
+	public void setRevisorStatus(java.lang.Character revisorStatus) {
+		this.revisorStatus = revisorStatus;
+	}
+
 	public NewOrder(java.lang.String electricalSubmit,
 			java.lang.String structuralSubmit, java.lang.String residentName,
 			java.lang.Character typeResidence, java.lang.String status,
-			java.lang.Character hoaApproval) {
+			java.lang.Character hoaApproval, java.lang.Character revisorStatus) {
 		this.electricalSubmit = electricalSubmit;
 		this.structuralSubmit = structuralSubmit;
 		this.residentName = residentName;
 		this.typeResidence = typeResidence;
 		this.status = status;
 		this.hoaApproval = hoaApproval;
+		this.revisorStatus = revisorStatus;
 	}
 
 }
