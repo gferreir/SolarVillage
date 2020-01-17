@@ -6,12 +6,24 @@ package com.homework.solarvillage;
 
 public class RequestStatus implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public RequestStatus() {
-    }
+	@org.kie.api.definition.type.Label(value = "PID")
+	private java.lang.Integer pid;
 
+	public RequestStatus() {
+	}
 
+	public java.lang.Integer getPid() {
+		return this.pid;
+	}
 
+	public void setPid(java.lang.Integer pid) {
+		this.pid = pid;
+	}
+
+	public RequestStatus(java.lang.Integer pid) {
+		this.pid = pid;
+	}
 
 }
