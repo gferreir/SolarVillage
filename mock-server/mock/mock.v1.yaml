@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: electrical
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /submit/electrical:
+    post:
+      summary: Submmit electrical request
+      tags: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/response.v1.yaml
+      operationId: post-electrical
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/request.v1.yaml
+      description: ''
+      parameters: []
+    parameters: []
+  /submit/structural:
+    post:
+      summary: structural
+      tags: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/response.v1.yaml
+      operationId: post-submit-structural
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/request.v1.yaml
+  /status/electrical:
+    get:
+      summary: get status electrical submission
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/response.v1.yaml
+      operationId: get-status-electrical
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/request.v1.yaml
+  /status/structural:
+    get:
+      summary: get status structural submission
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/response.v1.yaml
+      operationId: get-status-structural
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/request.v1.yaml
+  /rescind:
+    delete:
+      summary: rescind electrical submission
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/responserescind.v1.yaml
+      operationId: delete-rescind-electrical
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/request.v1.yaml
+    parameters: []
+components:
+  schemas: {}

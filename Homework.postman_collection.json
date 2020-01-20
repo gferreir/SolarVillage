@@ -1,0 +1,818 @@
+{
+	"info": {
+		"_postman_id": "67f29b4c-2957-4c30-a0b7-e59021c2db75",
+		"name": "Homework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Starting Process Appartment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sales-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"newOrder\": {\n        \"com.homework.solarvillage.NewOrder\": {\n            \"residentName\": \"Joao da Silva\",\n            \"typeResidence\": \"A\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/processes/{{PROCESS_ID}}/instances",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"processes",
+						"{{PROCESS_ID}}",
+						"instances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Starting Process House",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "@redhat99",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adminUser",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"newOrder\": {\n        \"com.homework.solarvillage.NewOrder\": {\n            \"residentName\": \"Joao da Silva\",\n            \"typeResidence\": \"H\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/processes/{{PROCESS_ID}}/instances",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"processes",
+						"{{PROCESS_ID}}",
+						"instances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting process instace id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0197de98-00ca-467d-9e06-6a3c0b6c7e79",
+						"exec": [
+							"pm.environment.set(\"PROCESS_INSTANCE_ID\", pm.response.json()['process-instance'][0]['process-instance-id']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sales-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/processes/instances",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"processes",
+						"instances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting task ID Sales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "93eeb125-5c5b-4857-bfa2-cb920270d51d",
+						"exec": [
+							"pm.environment.set(\"TASK_ID\", pm.response.json()['task-summary'][0]['task-id']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sales-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/queries/tasks/instances/process/{{PROCESS_INSTANCE_ID}}",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"queries",
+						"tasks",
+						"instances",
+						"process",
+						"{{PROCESS_INSTANCE_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Claim task Sales",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sales-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/claimed",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"claimed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start task Sales",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sales-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/started",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"started"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete task Sales",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sales-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"newOrder\": {\n        \"com.homework.solarvillage.NewOrder\": {\n            \"residentName\": \"Joao da Silva\",\n            \"typeResidence\": \"A\",\n            \"hoaApproval\": \"Y\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/completed",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"completed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting task ID HOA",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c53817ba-7b7f-4dde-ac98-a8259539cf31",
+						"exec": [
+							"pm.environment.set(\"TASK_ID\", pm.response.json()['task-summary'][0]['task-id']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "@redhat99",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adminUser",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/queries/tasks/instances/process/{{PROCESS_INSTANCE_ID}}",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"queries",
+						"tasks",
+						"instances",
+						"process",
+						"{{PROCESS_INSTANCE_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Claim task HOA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "hoa-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/claimed",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"claimed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start task HOA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "hoa-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/started",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"started"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete task HOA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "hoa-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"newOrder\": {\n        \"com.homework.solarvillage.NewOrder\": {\n            \"residentName\": \"Joao da Silva\",\n            \"typeResidence\": \"A\",\n            \"hoaApproval\": \"Y\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/completed",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"completed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting task ID Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b2325722-5067-492f-8c7e-f41ba14d1b8f",
+						"exec": [
+							"pm.environment.set(\"TASK_ID\", pm.response.json()['task-summary'][0]['task-id']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "@redhat99",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adminUser",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/queries/tasks/instances/process/{{PROCESS_INSTANCE_ID}}",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"queries",
+						"tasks",
+						"instances",
+						"process",
+						"{{PROCESS_INSTANCE_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Claim task Status",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "status-op",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/claimed",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"claimed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start task Status",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "status-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/started",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"started"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete task Status",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "status-op",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"newOrder\": {\n        \"com.homework.solarvillage.NewOrder\": {\n            \"residentName\": \"Joao da Silva\",\n            \"typeResidence\": \"A\",\n            \"hoaApproval\": \"Y\",\n            \"revisorStatus\": \"Y\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://{{KIE_SERVER_URL}}/containers/{{CONTAINER_ID}}/tasks/{{TASK_ID}}/states/completed",
+					"protocol": "http",
+					"host": [
+						"{{KIE_SERVER_URL}}"
+					],
+					"path": [
+						"containers",
+						"{{CONTAINER_ID}}",
+						"tasks",
+						"{{TASK_ID}}",
+						"states",
+						"completed"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,11 @@
+title: responseRescind
+type: object
+properties:
+  id:
+    type: integer
+    minimum: 1
+    maximum: 9
+  status:
+    type: string
+    enum:
+      - RESCINDED
